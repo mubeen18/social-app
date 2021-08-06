@@ -1,0 +1,14 @@
+<br><br>
+<%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+<h1>Articles</h1>
+<%= link_to "Create Article", new_article_path%>
+<ul>
+  <% @articles.each do |article| %>
+    <li>
+      <a href="<%= article_path(article) %>">
+        <%= article.title %>
+      </a>
+      <%= article.description %>
+    </li>
+  <% end %>
+</ul>

@@ -1,0 +1,18 @@
+<h1>Single Article</h1>
+
+<h1><%= @article.title %></h1>
+
+<p><%= @article.description %></p>
+
+<%= render "comments/index", article: @comment %>
+<%= render "comments/form", article: @article %>
+
+
+<li>
+  <%= link_to "Edit", edit_article_path(@article) %>
+</li>
+<li>
+  <%= link_to "Destroy", article_path(@article),
+                method: :delete,
+                data: { confirm: "Are you sure?" } %>
+</li>
