@@ -1,4 +1,4 @@
-<h1>Single Article</h1>
+<%= render :partial => 'shared/navbar' %>
 
 <h1><%= @article.title %></h1>
 
@@ -16,3 +16,5 @@
                 method: :delete,
                 data: { confirm: "Are you sure?" } %>
 </li>
+
+<%= render :partial => 'shared/footer' %>
