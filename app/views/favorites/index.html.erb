@@ -1,0 +1,17 @@
+<%= render :partial => 'shared/navbar' %>
+
+<h1 style="margin:20px">Your Favorite Article List: </h1>
+<% @articles.each do |article| %>
+  <div style="padding: 10px">
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title"><%= article.title %></h5>
+        <h6 class="card-subtitle mb-2 text-muted">Checkout the blog</h6>
+        <p class="card-text"><%= article.description.truncate(30) %></p>
+        <a href="<%= article_path(article) %>" class="card-link">Read Article</a>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<%= render :partial => 'shared/footer' %>

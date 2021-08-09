@@ -1,9 +1,8 @@
 <nav class="navbar navbar-dark bg-dark">
   <a class="navbar-brand" style="padding: 10px" href="#">Rails Website</a>
-  <form class="form-inline my-2 my-lg-0">
-    <% if user_signed_in? %>
-      <h5><%= current_user.name %></h5>
+  <% if user_signed_in? %>
+      <h6 style="color: white; margin-left: 70%">Welcome <%= current_user.name %></h6>
       <h6 style="padding: 10px; margin-right: 20px"><%= link_to "Sign out", destroy_user_session_path, :method => :delete, :class => "signout-text" %></h6>
     <% end %>
-  </form>
+
 </nav>

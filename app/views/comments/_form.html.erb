@@ -1,10 +1,10 @@
+<strong><p>Write Comment:</p></strong>
 <%= form_with model: [ article, article.comments.build ] do |form| %>
   <p>
-    <%= form.label :comment_body %><br>
-    <%= form.text_area :comment_body %>
+    <%= form.text_area :comment_body, :placeholder => "Write you comment here...", :class => "cmt-txt-area" %>
   </p>
   <p>
-    <%= form.submit %>
+    <%= form.submit "Comment", :class => "btn btn-success"%>
   </p>
 <% end %>
 

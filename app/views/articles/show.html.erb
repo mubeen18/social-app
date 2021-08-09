@@ -1,20 +1,79 @@
 <%= render :partial => 'shared/navbar' %>
 
-<h1><%= @article.title %></h1>
+<div class="col" style="margin: 20px; padding: 20px">
+  <div class="row">
+    <div class="col-8">
+      <h1 class="entry-title"><%= @article.title %></h1>
+    </div>
+    <div class="col-4">
+      <% if user_signed_in? %>
+        <% if @article.is_favorite?(current_user) %>
+          <%= link_to content_tag(
+                        :i,
+                        nil,
+                        class: 'fa fa-bookmark web-font-sz fixed-right'
+                      ), unfav_path(@article), method:"delete", remote: true %>
+        <% else %>
+          <%= link_to content_tag(
+                        :i,
+                        nil,
+                        class: 'fa fa-bookmark web-font-sz fixed-right'
+                      ), fav_path(@article), method:"post" , remote: true %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row entry-meta">
+    <span class="byline">by <%= current_user.name %></span>
+  </div>
+  <div class="row entry-content">
+    <p><%= @article.description %></p>
+  </div>
+    <div class="row">
+      <% if @article.user_id == current_user.id %>
+        <div class="col">
+            <%= link_to content_tag(
+                          :i,
+                          nil,
+                          class: 'fa fa-pencil web-font-sz'
+                        ), edit_article_path(@article) %>
 
-<p><%= @article.description %></p>
-
-<%= render "comments/index", article: @comment %>
-<%= render "comments/form", article: @article %>
-
-
-<li>
-  <%= link_to "Edit", edit_article_path(@article) %>
-</li>
-<li>
-  <%= link_to "Destroy", article_path(@article),
-                method: :delete,
-                data: { confirm: "Are you sure?" } %>
-</li>
+            <%= link_to content_tag(
+                          :i,
+                          nil,
+                          class: 'fa fa-trash-o web-font-sz'
+                        ), article_path(@article),
+                        method: :delete,
+                        data: { confirm: "Are you sure?" } %>
+        </div>
+      <% end %>
+      <div class="col">
+        <div style="float: right">
+          <% if user_signed_in? %>
+            <% if @article.liked?(current_user) %>
+              <%= link_to content_tag(
+                            :i,
+                            nil,
+                            class: 'fa fa-thumbs-up web-font-sz'
+                          ), unlike_path(@article), method:"delete", remote: true %>
+            <% else %>
+              <%= link_to content_tag(
+                            :i,
+                            nil,
+                            class: 'fa fa-thumbs-up'
+                          ), like_path(@article), method:"post" , remote: true %>
+            <% end %>
+          <% end %>
+          <strong><%= @article.likes.count %> Likes</strong>
+        </div>
+      </div>
+    </div>
+  <div class="row" style="margin-top:10%">
+    <%= render "comments/index", article: @comment %>
+  </div>
+  <div class="row comment-form">
+    <%= render "comments/form", article: @article %>
+  </div>
+</div>
 
 <%= render :partial => 'shared/footer' %>

@@ -2,14 +2,11 @@
 <h2>Comments</h2>
 <% @article.comments.each do |comment| %>
   <p>
-    <strong>Commenter:</strong>
-    <%= comment.user_name %>
+    <img src="https://www.w3schools.com/tryit/avatar.png" class="user-img">
+    <strong style="color:dodgerblue; margin-left: 10px"><%= comment.user_name %></strong>
   </p>
-
-  <p>
-    <strong>Comment:</strong>
+  <p style="margin-left: 3%">
     <%= comment.comment_body %>
   </p>
-
 <% end %>
 

@@ -33,3 +33,48 @@
     color: white;
     text-decoration: none;
 }
+h1.entry-title{
+    font-size: 50px;
+}
+.entry-title {
+    margin-bottom:0px;
+}
+h1 {
+    font-family: Helvetica;
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 1.2em;
+}
+.entry-meta {
+    color: #595959;
+    font-size: 85%;
+    margin-top: .5em;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+.comment-form {
+    margin-bottom: 13%;
+}
+.cmt-txt-area {
+    width: 50%;
+    border-color: #999999;
+}
+.cmt-label {
+    font-size: 10px;
+}
+.user-img {
+    width: 40px;
+    border-radius: 50%;
+}
+.input-form {
+    margin-top: 5%;
+}
+.text-area-style {
+    margin-top: 0px; margin-bottom: 0px; height: 414px;
+}
+.web-font-sz {
+    font-size: 30px;
+}
+.fixed-right {
+    float:right;
+}
