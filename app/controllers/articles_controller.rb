@@ -56,9 +56,11 @@ class ArticlesController < ApplicationController
 
   def unlike
     @article = Article.find(params[:id])
-    @like = @article.likes.find {|like| like.user_id ==  current_user.id }
-    @like.destroy
-    redirect_to article_path(@article)
+    @like = @article.likes.find_by(User_id:current_user.id)
+    if @like.present?
+      @like.destroy
+      redirect_to article_path(@article)
+    end
   end
 
   def fav
@@ -69,9 +71,11 @@ class ArticlesController < ApplicationController
 
   def unfav
     @article = Article.find(params[:id])
-    @favorite = @article.favorites.find {|favorite| favorite.User_id == current_user.id}
-    @favorite.destroy
-    redirect_to article_path(@article)
+    @favorite = @article.favorites.find_by(User_id: current_user.id)
+    if @favorite.present?
+         @favorite.destroy
+        redirect_to article_path(@article)
+    end
   end
 
 end

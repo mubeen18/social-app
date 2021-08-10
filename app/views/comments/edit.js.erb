@@ -1,0 +1,4 @@
+$(".comment-content-<%= @comment.id %> p").remove()
+
+$(".comment-content-<%= @comment.id %>").append('<%= escape_javascript(render partial: 'form', locals: { article: @article }) %>');
+$(".comment-links-<%= @comment.id %>").css("display","none")

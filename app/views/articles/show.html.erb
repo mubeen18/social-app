@@ -5,19 +5,19 @@
     <div class="col-8">
       <h1 class="entry-title"><%= @article.title %></h1>
     </div>
-    <div class="col-4">
+    <div class="col-4" id="favorite-logo">
       <% if user_signed_in? %>
         <% if @article.is_favorite?(current_user) %>
           <%= link_to content_tag(
                         :i,
                         nil,
-                        class: 'fa fa-bookmark web-font-sz fixed-right'
+                        class: 'bi bi-bookmark-heart-fill web-font-sz fixed-right',
                       ), unfav_path(@article), method:"delete", remote: true %>
         <% else %>
           <%= link_to content_tag(
                         :i,
                         nil,
-                        class: 'fa fa-bookmark web-font-sz fixed-right'
+                        class: 'bi bi-bookmark-heart web-font-sz fixed-right'
                       ), fav_path(@article), method:"post" , remote: true %>
         <% end %>
       <% end %>
@@ -54,13 +54,13 @@
               <%= link_to content_tag(
                             :i,
                             nil,
-                            class: 'fa fa-thumbs-up web-font-sz'
+                            class: 'bi bi-hand-thumbs-up-fill web-font-sz'
                           ), unlike_path(@article), method:"delete", remote: true %>
             <% else %>
               <%= link_to content_tag(
                             :i,
                             nil,
-                            class: 'fa fa-thumbs-up'
+                            class: 'bi bi-hand-thumbs-up web-font-sz'
                           ), like_path(@article), method:"post" , remote: true %>
             <% end %>
           <% end %>

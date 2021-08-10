@@ -20,6 +20,30 @@ class CommentsController < ApplicationController
     end
   end
 
+  def edit
+    @article = Article.find(params[:article_id])
+    @comment = @article.comments.find_by(id:params[:id])
+  end
+
+  def update
+    @article = Article.find(params[:article_id])
+    @comment = @article.comments.find_by(id:params[:id])
+
+    if @article.update(comment_params)
+      redirect_to @article
+    else
+      render :edit
+    end
+
+  end
+
+  def destroy
+    @article = Article.find(params[:article_id])
+    @comment = @article.comments.find_by(id:params[:id])
+    @comment.destroy
+
+    redirect_to @article
+  end
 
 
   private

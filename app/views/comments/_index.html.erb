@@ -5,8 +5,20 @@
     <img src="https://www.w3schools.com/tryit/avatar.png" class="user-img">
     <strong style="color:dodgerblue; margin-left: 10px"><%= comment.user_name %></strong>
   </p>
-  <p style="margin-left: 3%">
-    <%= comment.comment_body %>
-  </p>
+  <div class="comment-content-<%= comment.id %>">
+    <p style="margin-left: 3%">
+      <%= comment.comment_body %>
+    </p>
+  </div>
+  <div class="comment-links-<%= comment.id %>">
+    <%= link_to "edit", edit_article_comment_path(@article.id, comment), remote: true %>
+    <%= link_to content_tag(
+                  :i,
+                  nil,
+                  class: 'fa fa-trash-o web-font-sz'
+                ), article_comment_path(@article.id,comment),
+                method: :delete,
+                data: { confirm: "Are you sure?" } %>
+  </div>
 <% end %>
 
